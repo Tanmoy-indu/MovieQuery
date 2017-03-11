@@ -8,28 +8,61 @@ var movieList = [
 ];
 
 function getMovieTitle( index ){
-  return movielist[index].title
+  document.getElementById("demo").innerHTML = movieList.title;
+  return movieList.title;
 }
+function findByTitle( title ){
+ var found = [];
+    var f = 0;
+ for (var i = 0; i < movieList.length; i++){
+         if (movieList[i].title.search(title) != -1){
+              found[f] = movieList[i];
+              f++;
+            }
+          }
+          return JSON.stringify(found);
+        }
+        console.log(findByTitle("Matrix"));
 
-console.log(getMovieTitle(3));
-
-function addMovie( string title,int year,int length,int rating,string genre){
-  Movie tempMovie = new Movie(title,year,length,rating, genre);
-       movieList.add(tempMovie);
-       return true;
+function addMovie( movie ){
+  var newMovie = {"Passengers", "2017", 152, '9.0', 'thriller'};
 }
 
 var newMovie = {};
 console.log(addMovie(newMovie));
 
-function movieByRating(string rating){
-return movielist[index].rating;
+function movieByRating(){
+
+  var arr =[], visit=[];
+  for (var i = 0; i < movieList.length; i++) {
+    arr.push(parseFloat(movieList[i].rating));
+    visit.push(false);
 }
+arr.sort();
+ for (var i = 0; i < arr.length; i++)
+ {
+  for (var j = 0; j < movieList.length; j++)
+   {
+    if (arr[i] == parseFloat(movieList[j].rating) && visit[j] == false) // 
+     {
+      visit[j] = true; 
 
 console.log(movieByRating());
-
-function findByTitle( title ){
-this.title=title;
+}
 }
 
+function findByTitle( title ){
+
+  document.getElementById("demo").innerHTML = movieList.title;
+  return movieList.title;
+  function findByTitle( title ){
+    var found = [];
+    var f = 0;
+    for (var i = 0; i < movieList.length; i++){
+      if (movieList[i].title.search(title) != -1){
+        found[f] = movieList[i];
+         f++;
+}
+}
+return JSON.stringify(found);
 console.log(findByTitle("matrix"));
